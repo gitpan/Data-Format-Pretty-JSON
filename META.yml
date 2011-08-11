@@ -24,4 +24,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Data-Format-Pretty-JSON/
   repository: http://github.com/sharyanto/perl-Data-Format-Pretty-JSON
-version: 0.01
+version: 0.02

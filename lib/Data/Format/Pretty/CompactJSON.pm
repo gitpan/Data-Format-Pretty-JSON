@@ -1,10 +1,10 @@
-package Data::Format::Pretty::JSON;
+package Data::Format::Pretty::CompactJSON;
 
 use 5.010;
 use strict;
 use warnings;
 
-use JSON;
+use Data::Format::Pretty::JSON;
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -15,21 +15,21 @@ my $json = JSON->new->utf8->allow_nonref;
 our $VERSION = '0.02'; # VERSION
 
 sub format_pretty {
-    my ($data, $opts) = @_;
-    $opts //= {};
-    $json->pretty($opts->{pretty} // 1);
-    $json->encode($data);
+    my ($data, $opts0) = @_;
+    my %opts = $opts0 ? %$opts0 : ();
+    $opts{pretty} = 0;
+    Data::Format::Pretty::JSON::format_pretty($data, \%opts);
 }
 
 1;
-# ABSTRACT: Pretty-print data structure as JSON
+# ABSTRACT: Pretty-print data structure as compact JSON
 
 
 =pod
 
 =head1 NAME
 
-Data::Format::Pretty::JSON - Pretty-print data structure as JSON
+Data::Format::Pretty::CompactJSON - Pretty-print data structure as compact JSON
 
 =head1 VERSION
 
@@ -37,21 +37,14 @@ version 0.02
 
 =head1 SYNOPSIS
 
- use Data::Format::Pretty::JSON qw(format_pretty);
+ use Data::Format::Pretty::CompactJSON qw(format_pretty);
  print format_pretty($data);
 
 Some example output:
 
 =over 4
 
-=item * format_pretty({a=>1, b=>2})
-
-  {
-      "a" : 1,
-      "b" : 1,
-  }
-
-=item * format_pretty({a=>1, b=>2}, {pretty=>0});
+=item * format_pretty({a=>1, b=>2});
 
  {"a":1,"b":2}
 
@@ -59,27 +52,19 @@ Some example output:
 
 =head1 DESCRIPTION
 
-This module uses L<JSON> to encode data as JSON.
-
-=for Pod::Coverage new
+This module is a shortcut for using L<Data::Format::Pretty::JSON> with options
+C<pretty>=0.
 
 =head1 FUNCTIONS
 
 =head2 format_pretty($data, \%opts)
 
-Return formatted data structure as JSON. Options:
-
-=over 4
-
-=item * pretty => BOOL (default 1)
-
-Whether to pretty-print JSON.
-
-=back
+Return formatted data structure as JSON. See L<Data::Format::Pretty::JSON> for
+details.
 
 =head1 SEE ALSO
 
-L<Data::Format::Pretty>
+L<Data::Format::Pretty::JSON>
 
 =head1 AUTHOR
 

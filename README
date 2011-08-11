@@ -2,7 +2,7 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);
@@ -43,11 +43,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 58:
-        You forgot a '=back' before '=head1'
 

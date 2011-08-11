@@ -6,6 +6,7 @@ MANIFEST.SKIP
 META.yml
 README
 dist.ini
+lib/Data/Format/Pretty/CompactJSON.pm
 lib/Data/Format/Pretty/JSON.pm
 t/00-compile.t
 t/01-basics.t

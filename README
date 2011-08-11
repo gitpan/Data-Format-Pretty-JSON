@@ -1,0 +1,53 @@
+NAME
+    Data::Format::Pretty::JSON - Pretty-print data structure as JSON
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Data::Format::Pretty::JSON qw(format_pretty);
+     print format_pretty($data);
+
+    Some example output:
+
+    *   format_pretty({a=>1, b=>2})
+
+          {
+              "a" : 1,
+              "b" : 1,
+          }
+
+    *   format_pretty({a=>1, b=>2}, {pretty=>0});
+
+         {"a":1,"b":2}
+
+DESCRIPTION
+    This module uses JSON to encode data as JSON.
+
+FUNCTIONS
+  format_pretty($data, \%opts)
+    Return formatted data structure as JSON. Options:
+
+    *   pretty => BOOL (default 1)
+
+        Whether to pretty-print JSON.
+
+SEE ALSO
+    Data::Format::Pretty
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 58:
+        You forgot a '=back' before '=head1'
+

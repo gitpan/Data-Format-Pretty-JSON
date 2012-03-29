@@ -12,7 +12,9 @@ our @EXPORT_OK = qw(format_pretty);
 
 my $json = JSON->new->utf8->allow_nonref;
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
+
+sub content_type { "application/json" }
 
 sub format_pretty {
     my ($data, $opts) = @_;
@@ -33,7 +35,7 @@ Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -87,7 +89,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2012 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

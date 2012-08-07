@@ -3,10 +3,8 @@ abstract: 'Pretty-print data structure as JSON'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
-  File::Find: 0
-  File::Temp: 0
   Module::Build: 0.3601
-  Test::More: 0
+  Test::More: 0.96
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
@@ -17,13 +15,9 @@ meta-spec:
   version: 1.4
 name: Data-Format-Pretty-JSON
 requires:
-  Exporter: 0
   JSON: 0
-  Test::More: 0.96
   perl: 5.010000
-  strict: 0
-  warnings: 0
 resources:
   homepage: http://search.cpan.org/dist/Data-Format-Pretty-JSON/
   repository: http://github.com/sharyanto/perl-Data-Format-Pretty-JSON
-version: 0.03
+version: 0.04

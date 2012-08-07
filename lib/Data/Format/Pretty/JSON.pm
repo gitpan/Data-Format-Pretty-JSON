@@ -12,7 +12,7 @@ our @EXPORT_OK = qw(format_pretty);
 
 my $json = JSON->new->utf8->allow_nonref;
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 sub content_type { "application/json" }
 
@@ -35,7 +35,7 @@ Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

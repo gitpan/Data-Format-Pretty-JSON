@@ -2,7 +2,7 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);

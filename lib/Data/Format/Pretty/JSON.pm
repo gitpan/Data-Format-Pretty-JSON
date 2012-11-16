@@ -4,23 +4,31 @@ use 5.010;
 use strict;
 use warnings;
 
-use JSON;
-
 require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-my $json = JSON->new->utf8->allow_nonref;
-
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 sub content_type { "application/json" }
 
 sub format_pretty {
     my ($data, $opts) = @_;
     $opts //= {};
-    $json->pretty($opts->{pretty} // 1);
-    $json->encode($data);
+
+    state $json;
+
+    if ($opts->{color} // (-t STDOUT)) {
+        require JSON::Color;
+        JSON::Color::encode_json($data, {pretty=>1, linum=>1}) . "\n";
+    } else {
+        if (!$json) {
+            require JSON;
+            $json = JSON->new->utf8->allow_nonref;
+        }
+        $json->pretty($opts->{pretty} // 1);
+        $json->encode($data);
+    }
 }
 
 1;
@@ -35,7 +43,7 @@ Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -73,11 +81,20 @@ Return formatted data structure as JSON. Options:
 
 =over 4
 
+=item * color => BOOL
+
+Whether to enable coloring. The default is the enable only when running
+interactively. Currently also enable line numbering.
+
 =item * pretty => BOOL (default 1)
 
 Whether to pretty-print JSON.
 
 =back
+
+=head2 content_type() => STR
+
+Return C<application/json>.
 
 =head1 SEE ALSO
 

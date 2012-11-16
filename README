@@ -2,7 +2,7 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.04
+    version 0.05
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);
@@ -28,9 +28,17 @@ FUNCTIONS
   format_pretty($data, \%opts)
     Return formatted data structure as JSON. Options:
 
+    *   color => BOOL
+
+        Whether to enable coloring. The default is the enable only when
+        running interactively. Currently also enable line numbering.
+
     *   pretty => BOOL (default 1)
 
         Whether to pretty-print JSON.
+
+  content_type() => STR
+    Return "application/json".
 
 SEE ALSO
     Data::Format::Pretty

@@ -16,8 +16,9 @@ meta-spec:
 name: Data-Format-Pretty-JSON
 requires:
   JSON: 0
+  JSON::Color: 0.04
   perl: 5.010000
 resources:
   homepage: http://search.cpan.org/dist/Data-Format-Pretty-JSON/
   repository: http://github.com/sharyanto/perl-Data-Format-Pretty-JSON
-version: 0.04
+version: 0.05

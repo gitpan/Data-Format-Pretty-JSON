@@ -24,9 +24,15 @@
             "Module::Build" : "0.3601"
          }
       },
+      "develop" : {
+         "requires" : {
+            "Test::Rinci" : "0.01"
+         }
+      },
       "runtime" : {
          "requires" : {
             "JSON" : 0,
+            "JSON::Color" : "0.04",
             "perl" : "5.010000"
          }
       },
@@ -43,6 +49,6 @@
          "url" : "http://github.com/sharyanto/perl-Data-Format-Pretty-JSON"
       }
    },
-   "version" : "0.04"
+   "version" : "0.05"
 }
 

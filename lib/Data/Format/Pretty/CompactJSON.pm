@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 sub content_type { "application/json" }
 
@@ -18,7 +18,7 @@ sub format_pretty {
 
     $opts //= {};
 
-    if ($opts->{color} // (-t STDOUT)) {
+    if ($opts->{color} // $ENV{COLOR} // (-t STDOUT)) {
         require JSON::Color;
         JSON::Color::encode_json($data, {pretty=>0, linum=>0});
     } else {
@@ -42,7 +42,7 @@ Data::Format::Pretty::CompactJSON - Pretty-print data structure as compact JSON
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -82,6 +82,12 @@ interactively.
 =head2 content_type() => STR
 
 Return C<application/json>.
+
+=head1 ENVIRONMENT
+
+=head2 COLOR => BOOL
+
+Set C<color> option (if unset).
 
 =head1 SEE ALSO
 

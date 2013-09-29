@@ -2,20 +2,20 @@
 use strict;
 
 use Data::Format::Pretty::JSON qw(format_pretty);
-use Test::More;
+use Test::More 0.98;
 
 test_format_pretty(
     name => 'default',
     data => {a=>1, b=>2},
     opts => {},
-    output_re => qr/"a"\s+:\s+1/,
+    output_re => qr/a.*:.*1/,
 );
 
 test_format_pretty(
     name => 'opt: pretty=0',
     data => {a=>1, b=>2},
     opts => {pretty=>0},
-    output_re => qr/"a":1/,
+    output_re => qr/a.*:.*1/,
 );
 
 done_testing();

@@ -2,7 +2,7 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.07
+    version 0.08
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);
@@ -49,6 +49,8 @@ FUNCTIONS
   content_type() => STR
     Return "application/json".
 
+    None are exported by default, but they are exportable.
+
 ENVIRONMENT
   COLOR => BOOL
     Set "color" option (if unset).
@@ -58,6 +60,22 @@ ENVIRONMENT
 
 SEE ALSO
     Data::Format::Pretty
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Data-Format-Pretty-JSON>.
+
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-Data-Format-Pretty-JSON>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Data-Format-Pretty-JS
+    ON>
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
 
 AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>

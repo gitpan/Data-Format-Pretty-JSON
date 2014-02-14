@@ -2,7 +2,7 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.08
+    version 0.09
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);
@@ -17,10 +17,12 @@ SYNOPSIS
           3:    "b" : 2,
           4:}
 
-        By default color is turned on (unless forced off via "COLOR"
-        environment) as well as pretty printing (unless turned off via
-        pretty=>1) and line numbers (unless when pretty=>0 or turned off by
-        linum=>0).
+        By default color is turned on when interactive (unless forced off
+        via color=>0 or environment "COLOR=0"). By default pretty printing
+        is turned on (unless turned off via pretty=>0) and line numbers
+        (unless turned off via when pretty=>0). By default line numbers are
+        printed when interactive (unless turned off via by linum=>0 or
+        environment "LINUM=0").
 
     *   format_pretty({a=>1, b=>2}, {pretty=>0});
 
@@ -33,23 +35,22 @@ FUNCTIONS
   format_pretty($data, \%opts)
     Return formatted data structure as JSON. Options:
 
-    *   color => BOOL
+    *   color => BOOL (default: 1 on interactive)
 
         Whether to enable coloring. The default is the enable only when
-        running interactively. Currently also enable line numbering.
+        running interactively.
 
     *   pretty => BOOL (default: 1)
 
         Whether to pretty-print JSON.
 
-    *   linum => BOOL (default: 1 or 0 if pretty=0)
+    *   linum => BOOL (default: 1 on interactive)
 
-        Whether to add line numbers.
+        Whether to add line numbers. The default is the enable only when
+        running interactively.
 
   content_type() => STR
     Return "application/json".
-
-    None are exported by default, but they are exportable.
 
 ENVIRONMENT
   COLOR => BOOL
@@ -57,6 +58,10 @@ ENVIRONMENT
 
   LINUM => BOOL
     Set "linum" option (if unset).
+
+FAQ
+  How do I turn off line numbers?
+    You can use environment LINUM=0 or set option "linum => 0".
 
 SEE ALSO
     Data::Format::Pretty
@@ -81,7 +86,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
+    This software is copyright (c) 2014 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

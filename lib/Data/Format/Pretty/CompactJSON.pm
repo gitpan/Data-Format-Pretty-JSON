@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 sub content_type { "application/json" }
 
@@ -45,7 +45,7 @@ Data::Format::Pretty::CompactJSON - Pretty-print data structure as compact JSON
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -86,9 +86,6 @@ interactively.
 
 Return C<application/json>.
 
-
-None are exported by default, but they are exportable.
-
 =head1 ENVIRONMENT
 
 =head2 COLOR => BOOL
@@ -121,7 +118,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

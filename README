@@ -2,40 +2,20 @@ NAME
     Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 VERSION
-    version 0.09
+    version 0.10
 
 SYNOPSIS
      use Data::Format::Pretty::JSON qw(format_pretty);
      print format_pretty($data);
 
-    Some example output:
-
-    *   format_pretty({a=>1, b=>2})
-
-          1:{
-          2:    "a" : 1,
-          3:    "b" : 2,
-          4:}
-
-        By default color is turned on when interactive (unless forced off
-        via color=>0 or environment "COLOR=0"). By default pretty printing
-        is turned on (unless turned off via pretty=>0) and line numbers
-        (unless turned off via when pretty=>0). By default line numbers are
-        printed when interactive (unless turned off via by linum=>0 or
-        environment "LINUM=0").
-
-    *   format_pretty({a=>1, b=>2}, {pretty=>0});
-
-         {"a":1,"b":2}
-
 DESCRIPTION
-    This module uses JSON to encode data as JSON.
+    This module uses JSON or JSON::Color to encode data as JSON.
 
 FUNCTIONS
   format_pretty($data, \%opts)
     Return formatted data structure as JSON. Options:
 
-    *   color => BOOL (default: 1 on interactive)
+    *   color => BOOL (default: from env or 1 on interactive)
 
         Whether to enable coloring. The default is the enable only when
         running interactively.
@@ -44,10 +24,9 @@ FUNCTIONS
 
         Whether to pretty-print JSON.
 
-    *   linum => BOOL (default: 1 on interactive)
+    *   linum => BOOL (default: from env or 0)
 
-        Whether to add line numbers. The default is the enable only when
-        running interactively.
+        Whether to add line numbers.
 
   content_type() => STR
     Return "application/json".
@@ -60,9 +39,6 @@ ENVIRONMENT
     Set "linum" option (if unset).
 
 FAQ
-  How do I turn off line numbers?
-    You can use environment LINUM=0 or set option "linum => 0".
-
 SEE ALSO
     Data::Format::Pretty
 

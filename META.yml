@@ -25,7 +25,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Data-Format-Pretty-JSON
   homepage: https://metacpan.org/release/Data-Format-Pretty-JSON
   repository: git://github.com/sharyanto/perl-Data-Format-Pretty-JSON.git
-version: '0.09'
+version: '0.10'
 x_Dist_Zilla:
   perl:
     version: '5.010001'

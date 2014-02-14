@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 sub content_type { "application/json" }
 
@@ -21,8 +21,7 @@ sub format_pretty {
     my $pretty = $opts->{pretty} // 1;
     my $color  = $opts->{color} // $ENV{COLOR} // $interactive //
         $opts->{pretty};
-    my $linum  = $opts->{linum} // $ENV{LINUM} // $interactive //
-        $opts->{pretty};
+    my $linum  = $opts->{linum} // $ENV{LINUM} // 0;
     if ($color) {
         require JSON::Color;
         JSON::Color::encode_json($data, {pretty=>$pretty, linum=>$linum})."\n";
@@ -56,41 +55,18 @@ Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
  use Data::Format::Pretty::JSON qw(format_pretty);
  print format_pretty($data);
 
-Some example output:
-
-=over 4
-
-=item * format_pretty({a=>1, b=>2})
-
-  1:{
-  2:    "a" : 1,
-  3:    "b" : 2,
-  4:}
-
-By default color is turned on when interactive (unless forced off via color=>0
-or environment C<COLOR=0>). By default pretty printing is turned on (unless
-turned off via pretty=>0) and line numbers (unless turned off via when
-pretty=>0). By default line numbers are printed when interactive (unless turned
-off via by linum=>0 or environment C<LINUM=0>).
-
-=item * format_pretty({a=>1, b=>2}, {pretty=>0});
-
- {"a":1,"b":2}
-
-=back
-
 =head1 DESCRIPTION
 
-This module uses L<JSON> to encode data as JSON.
+This module uses L<JSON> or L<JSON::Color> to encode data as JSON.
 
-=for Pod::Coverage new
+=for Pod::Coverage ^(new)$
 
 =head1 FUNCTIONS
 
@@ -100,7 +76,7 @@ Return formatted data structure as JSON. Options:
 
 =over 4
 
-=item * color => BOOL (default: 1 on interactive)
+=item * color => BOOL (default: from env or 1 on interactive)
 
 Whether to enable coloring. The default is the enable only when running
 interactively.
@@ -109,10 +85,9 @@ interactively.
 
 Whether to pretty-print JSON.
 
-=item * linum => BOOL (default: 1 on interactive)
+=item * linum => BOOL (default: from env or 0)
 
-Whether to add line numbers. The default is the enable only when running
-interactively.
+Whether to add line numbers.
 
 =back
 
@@ -131,10 +106,6 @@ Set C<color> option (if unset).
 Set C<linum> option (if unset).
 
 =head1 FAQ
-
-=head2 How do I turn off line numbers?
-
-You can use environment L<LINUM=0> or set option C<< linum => 0 >>.
 
 =head1 SEE ALSO
 

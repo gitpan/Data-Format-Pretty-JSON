@@ -8,7 +8,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(format_pretty);
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 sub content_type { "application/json" }
 
@@ -32,8 +32,8 @@ sub format_pretty {
         }
         $json->pretty($pretty);
         if ($linum) {
-            require SHARYANTO::String::Util;
-            SHARYANTO::String::Util::linenum($json->encode($data));
+            require String::LineNumber;
+            String::LineNumber::linenum($json->encode($data));
         } else {
             $json->encode($data);
         }
@@ -55,7 +55,7 @@ Data::Format::Pretty::JSON - Pretty-print data structure as JSON
 
 =head1 VERSION
 
-version 0.10
+This document describes version 0.11 of Data::Format::Pretty::JSON (from Perl distribution Data-Format-Pretty-JSON), released on 2014-12-10.
 
 =head1 SYNOPSIS
 
@@ -117,7 +117,7 @@ Please visit the project's homepage at L<https://metacpan.org/release/Data-Forma
 
 =head1 SOURCE
 
-Source repository is at L<https://github.com/sharyanto/perl-Data-Format-Pretty-JSON>.
+Source repository is at L<https://github.com/perlancar/perl-Data-Format-Pretty-JSON>.
 
 =head1 BUGS
 
@@ -129,11 +129,11 @@ feature.
 
 =head1 AUTHOR
 
-Steven Haryanto <stevenharyanto@gmail.com>
+perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Steven Haryanto.
+This software is copyright (c) 2014 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
